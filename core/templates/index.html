@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Início</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+  <!-- <h1>Bem-vindo ao sistema de cadastro!</h1> 
+    <p>O que deseja fazer?</p>
+    <ul>
+      <li><a href="cadastrar.html">Cadastrar</a></li>
+      <li><a href="listar.html">Listar</a></li>
+    </ul>
+-->
+    <h1>Lista de pessoas</h1>
+    <ul>
+    {% for person in people%}
+        <li>{{ person.id }} - {{ person.name}}</li>
+    {% endfor %}
+    </ul>
+    <h1>Cadastrar Pessoa</h1>
+    <form action="{% url 'save' %}" method="POST">
+        {% csrf_token %}
+        <label>Nome:</label>
+        <input type="text" name="name">
+        <label>Idade:</label>
+        <input type="number" name="age">
+        <button type="submit">Cadastrar</button>
+    </form>
+  </body>
+</html>
